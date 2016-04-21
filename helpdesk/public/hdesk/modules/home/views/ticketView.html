@@ -1,0 +1,137 @@
+
+<div ng-controller="TicketController" class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="page-header">View Ticket</h3>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Ticket description
+                </div>
+                <div class="panel-body">
+                    <div id="msgBody" ng-if="MessagePoint.flag==true">
+                        <div class="alert alert-{{MessagePoint.cssType}} alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            {{MessagePoint.message}}
+                        </div>
+                    </div>
+                    <dl class="dl-horizontal">
+                        <dt>Subject:</dt>
+                        <dd>{{resData.subject}}</dd>
+                        <dt>Category</dt>
+                        <dd>{{resData.type.name}}</dd>
+                        <dt>Description</dt>
+                        <dd>{{resData.content}}</dd>
+                        <dt>User</dt>
+                        <dd><a href="#/userView/{{resData.user._id}}">{{resData.user.firstname}} {{resData.user.lastname}}</a></dd>
+
+                        <dt>Assigned to</dt>
+                        <dd><a href="#/userView/{{resData.assignedTo._id}}">{{resData.assignedTo.firstname}} {{resData.assignedTo.lastname}}</a></dd>
+                        <dt>Status</dt>
+                        <dd>{{resData.status.name}}({{resData.status.statusId}})</dd>
+                        <dt>Created on</dt>
+                        <dd> {{resData.createDate}}</dd>
+                        <dt>Updated on.</dt>
+                        <dd>{{resData.updateDate}}</dd>
+                    </dl>
+                    <div class="col-lg-12" ng-if="isTicketEditable()">
+
+                        <a href="#ticketEdit/{{resData._id}}">Edit</a>
+                    </div>
+
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-1">
+
+            <div ng-controller="AssignTicketCtrl">
+                <script type="text/ng-template" id="assignTicketModel.html">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Assign Ticket</h4>
+                    </div>
+                    <div class="form-group" style="margin-left:20px;width:550px">
+                        <label>Names</label>
+                        <select class="form-control" name="mySelect" id="mySelect3"
+                                ng-options="member.firstname for member in groupMembers2 track by member._id"
+                                ng-model="resData1.assignedTo" ng-change="validateAssignee()"></select>
+
+                    </div>
+                    <div class="form-group" style="margin-left:20px;width:550px">
+                        <label>Description</label>
+                        <textarea class="form-control" rows="3"></textarea>
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" ng-model="button" ng-disabled="assignDisabled" type="button" ng-click="ok()">Assign</button>
+                        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+                    </div>
+                </script>
+
+                <button type="button" class="btn btn-default" ng-click="open('{{resData._id}}','{{resData.assignedTo._id}}')">Assign</button>
+                <!--
+                 <div ng-show="selected">Selection from a modal: {{ selected }}{{groupMembers2}}</div>
+                 -->
+            </div>
+
+</div>
+        <div class="col-lg-11">
+            <div ng-controller="ChangeStatusCtrl">
+                <script type="text/ng-template" id="changeStatusModel.html">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Verify your ticket.</h4>
+                    </div>
+
+                    <div class="form-group" style="margin-left:20px;width:550px">
+                        <label>Comments</label>
+                        <textarea class="form-control" rows="3"></textarea>
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" ng-model="button" ng-disabled="assignDisabled" type="button" ng-click="yes(1)">Yes</button>
+                        <button class="btn btn-primary" ng-model="button" ng-disabled="assignDisabled" type="button" ng-click="no(-1)">No</button>
+                        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+                    </div>
+                </script>
+
+                <div class="row">
+
+
+                    <div class="col-lg-4" style="margin-left: 60px;padding-top: 10px;width: 11.7%;">
+                         <b>Status flow:</b>
+                    </div>
+                        <div class="col-lg-7">
+
+                <span ng-repeat="status in statusList" style="margin-right: 5px">
+                    <button type="button" ng-click="changeStatus2(status.statusId)"
+
+                            ng-style="resData.status.statusId == status.statusId ? {color:'#FF6200'} :{}"
+                            ng-disabled="(!(((resData.status.statusId-1)==status.statusId)||  (((resData.status.statusId+1)==status.statusId))    ))"
+
+                            class="btn btn-outline btn-primary btn-sm">{{status.name}}</button>
+                </span>
+
+
+                        </div>
+                        <!-- /.panel -->
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+    <!-- /.row -->
+</div>

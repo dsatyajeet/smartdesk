@@ -1,0 +1,114 @@
+
+<div ng-controller="TicketController" class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="page-header">View Ticket</h3>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Ticket description.{{myCount}}
+                </div>
+                <div class="panel-body">
+                    <div id="msgBody" ng-if="MessagePoint.flag==true">
+                        <div class="alert alert-{{MessagePoint.cssType}} alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            {{MessagePoint.message}}
+                        </div>
+                    </div>
+                    {{resData.assignedTo}}
+                    >>>>{{showAssignBox}}<<<<
+
+                    {{resData.assignedTo2}}
+                    <dl class="dl-horizontal">
+                        <dt>Subject:</dt>
+                        <dd>{{resData.subject}}</dd>
+                        <dt>Category</dt>
+                        <dd>{{resData.type.name}}</dd>
+                        <dt>Description</dt>
+                        <dd>{{resData.content}}</dd>
+                        <dt>User</dt>
+                        <dd><a href="#/userView/{{resData.user._id}}">{{resData.user.firstname}} {{resData.user.lastname}}</a></dd>
+                        <dt>Created on</dt>
+                        <dd> {{resData.createDate}}</dd>
+                        <dt>Updated on.</dt>
+                        <dd>{{resData.updateDate}}</dd>
+                    </dl>
+                    <div class="col-lg-12 text-center"><a href="#ticketEdit/566d73f08195f732db25c51a">Click</a> here to edit this ticket.
+                        <button class="btn btn-default" ng-click="assignTicketForMe()" ng-if="isTicketAssignable()">Assign to me</button>
+
+                    </div>
+
+                    <div ng-controller="AssignTicketCtrl">
+                        <script type="text/ng-template" id="assignTicketModel.html">
+                            <div class="modal-header">
+                                <h3 class="modal-title">Assign Ticket</h3>
+                            </div>
+                            <div class="form-group" style="margin-left:20px;width:550px">
+                                <label>Names</label>
+                                <select class="form-control" name="mySelect" id="mySelect3"
+                                        ng-options="member.firstname for member in groupMembers2 track by member._id"
+                                        ng-model="resData.assignedTo"></select>
+
+                            </div>
+                            <div class="form-group" style="margin-left:20px;width:550px">
+                                <label>Description</label>
+                                <textarea class="form-control" rows="3"></textarea>
+                            </div>
+
+
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" type="button" ng-click="ok()">Assign</button>
+                                <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+                            </div>
+                        </script>
+
+                        <button type="button" class="btn btn-default" ng-click="open('{{resData._id}}')">Assign</button>
+                        <div ng-show="selected">Selection from a modal: {{ selected }}{{groupMembers2}}</div>
+                    </div>
+
+
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                                </div>
+                                <div class="form-group" ng-mouseleave="flagOff()" ng-mouseenter="flagOn()" style="margin-left:20px;width:550px">
+                                    <label>Assign ticket</label>
+                                    <select class="form-control" name="mySelect" id="mySelect2"
+                                            ng-options="member.firstname for member in groupMembers track by member._id"
+                                            ng-model="resData.assignedTo"></select>
+
+                                </div>
+                                <div class="form-group" style="margin-left:20px;width:550px">
+                                    <label>Enter user's description.</label>
+                                    <textarea class="form-control" rows="3"></textarea>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" ng-click="alert()">Save changes</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+
+
+
+
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+    </div>
+    <!-- /.row -->
+</div>

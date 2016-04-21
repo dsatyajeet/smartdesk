@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS Files -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../fonts/icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet">
+    <link href="../css/animate.css" rel="stylesheet" media="screen">
+    <link href="../css/owl.theme.css" rel="stylesheet">
+    <link href="../css/owl.carousel.css" rel="stylesheet">
+    <link href="../css/helpdesk.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+    <![endif]-->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../javascripts/bootstrap.min.js"></script>
+    <script src="../javascripts/notify.js"></script>
+
+    <link href="../css/css-app.css" rel="stylesheet" media="screen">
+
+    <script src="../javascripts/jquery.noty.packaged.js"></script>
+    <script src="../javascripts/helpdesk.js"></script>
+    <script src="../javascripts/login.js"></script>
+
+    <script src="../javascripts/angular.min.js"></script>
+    <script src="../javascripts/angular-resource.min.js"></script>
+    <script src="../javascripts/angular-route.min.js"></script>
+    <script src="../javascripts/angular-cookies.min.js"></script>
+    <script src="../javascripts/angular-ngStorage.js"></script>
+
+    <script src="../javascripts/controller/angular-controller.js"></script>
+    <script src="../javascripts/service/angular-services.js"></script>
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet"
+          href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic"/>
+
+</head>
+<body ng-app="helpDeskApp" >
+<div ng-controller="userController" class="col-md-12 container">
+    <div class="panel panel-default plain profile-panel">
+        <div class="panel-body">
+            <div class="col-md-2">
+                <div class="profile-avatar">
+                    <img class="img-responsive" src="../images/profile.png" alt="profile picture">
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12">
+                <div class="user-name">
+                    $(Full name) <span class="label label-success">$(admin)</span>
+
+                </div>
+                <div title="logout" class="glyphicon glyphicon-log-out slideInLeft col-md-offset-10">
+                    <a href="#" ng-click="logout();">Logout</a>
+                </div>
+                <div class="profile-stats-info">
+                    <a href="#" title="ticket-complete"><i class="glyphicon glyphicon-flag"
+                                                           style="color: green;"></i><label style="color: green;">
+                            <strong>2000</strong><i>&nbsp;&nbsp;completed</i></label></a>
+                    <a href="#" title="Tickets-not-complete"><i class="glyphicon glyphicon-flag"
+                                                                style="color: red;"></i>
+                        <lable style="color: red;"><strong>2000</strong><i>&nbsp;&nbsp;Not-completed</i></lable>
+                    </a>
+                </div>
+                <br>
+
+                <div class="panel-footer white-content">
+                    <ul class="profile-info">
+                        <li><i class="glyphicon glyphicon-user"></i> $(username)</li>
+                        <li><i class="glyphicon glyphicon-phone"></i> $(contact number)</li>
+                        <li><i class="glyphicon glyphicon-envelope"></i> $(emailid)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div ng-controller="ticketsController">
+<div ng-repeat="ticket in tickets"  id="tickets" class="container panel panel-group" style="background-image:url('../images/banner5.jpg');">
+    <div class="row">
+        <div class="feature-img col-md-2 slideInLeft"><br><br>
+            <img src="../images/ticket-logo.png" alt="image" class="img-responsive wow fadeInLeft">
+        </div>
+        <div class="col-md-6 wow slideInLeft">
+            Subject
+            :
+            <input ng-model="ticket.subject" type="text"  name="subject" class="form-control input-sm" disabled/>
+
+            Content
+            :
+            <textarea ng-model="ticket.content" class="form-control" cols="9" rows="3" name="content" disabled></textarea>
+            Status
+            :
+            <div class="form-control input-sm">{{ticket.status}}</div>
+            Create Date
+            :
+            <input ng-model="ticket.createDate" type="text" name="create-date" class="form-control input-sm" disabled>
+
+            Update Date
+            :
+            <input ng-model="ticket.updateDate" type="text" name="update-date" class="form-control input-sm" disabled>
+        </div>
+        <div class="col-md-3 wow slideInLeft"><br><br><br>
+            <a href="#" ng-click="delete(ticket);" class="btn-default">Delete</a>
+        </div>
+    </div>
+</div>
+</div>
+<br>
+</body>
+</html>

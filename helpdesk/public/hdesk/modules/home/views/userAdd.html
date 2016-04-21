@@ -1,0 +1,128 @@
+<div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="page-header">Add User</h3>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Enter user details{{message}}
+                </div>
+
+
+                <div class="panel-body">
+                    <div id="msgBody" ng-if="MessagePoint.flag==true">
+                        <div class="alert alert-{{MessagePoint.cssType}} alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            {{MessagePoint.message}}
+                        </div>
+                    </div>
+
+                    <div>
+
+                        <form role="form" ng-submit="addUser()" class="ng-pristine ng-valid">
+                            <div class="row">
+
+
+                                <div class="col-lg-6">
+
+                                    <div class="form-group">
+                                        <label>First Name</label>
+                                        <input class="form-control" type="text" ng-model="resData.firstname">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Last Name</label>
+                                        <input class="form-control" placeholder="Enter text" ng-model="resData.lastname">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input class="form-control" placeholder="Enter email" ng-model="resData.email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Mobile</label>
+                                        <input class="form-control" placeholder="Enter mobile number" ng-model="resData.mobile">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Enter user's description.</label>
+                                        <textarea class="form-control" rows="3"></textarea>
+                                    </div>
+
+
+                                </div>
+                                <div class="col-lg-6">
+
+                                    <div class="form-group">
+                                        <label>Selects category</label>
+                                        <select class="form-control" name="mySelect" id="mySelect"
+                                                ng-options="category.name for category in categories track by category.categoryId"
+                                                ng-model="resData.supportType"></select>
+
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label>User roles</label>
+
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" ng-model="roleAdmin">Admin{{resData.roles[0].name}}
+                                            </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox"  ng-model="roleSupport">Support
+                                            </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox"  ng-model="roleCustomer">Customer
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Active status</label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1"
+                                                   value="option1" checked=""> Active
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2"
+                                                   value="option2">Inactive
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- /.col-lg-6 (nested) -->
+
+                                <!-- /.col-lg-6 (nested) -->
+                            </div>
+
+                            <!-- /.row (nested) -->
+                            <div class="row">
+                                <div class="col-lg-12 text-center" style="margin-top:15px">
+                                    <button type="submit" class="btn btn-default">Add</button>
+                                    <button type="reset" class="btn btn-default">Reset</button>
+
+                                </div>
+
+
+                            </div>
+                        </form>
+
+
+                    
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /#page-wrapper -->

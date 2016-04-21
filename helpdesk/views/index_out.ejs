@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS Files -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="fonts/icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet" media="screen">
+    <link href="css/owl.theme.css" rel="stylesheet">
+    <link href="css/owl.carousel.css" rel="stylesheet">
+    <link href="css/helpdesk.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+    <![endif]-->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <script src="/javascripts/notify.js"></script>
+    <!-- Colors -->
+    <link href="css/css-app.css" rel="stylesheet" media="screen">
+    <!-- <link href="css/css-app-green.css" rel="stylesheet" media="screen"> -->
+    <!-- <link href="css/css-app-purple.css" rel="stylesheet" media="screen"> -->
+    <!-- <link href="css/css-app-red.css" rel="stylesheet" media="screen"> -->
+    <!-- <link href="css/css-app-orange.css" rel="stylesheet" media="screen"> -->
+    <!-- <link href="css/css-app-yellow.css" rel="stylesheet" media="screen"> -->
+
+    <script src="/javascripts/jquery.noty.packaged.js"></script>
+    <script src="/javascripts/helpdesk.js"></script>
+    <script src="/javascripts/login.js"></script>
+
+    <script src="/javascripts/angular.min.js"></script>
+    <script src="/javascripts/angular-resource.min.js"></script>
+    <script src="/javascripts/angular-route.min.js"></script>
+    <script src="/javascripts/angular-cookies.min.js"></script>
+    <script src="/javascripts/angular-ngStorage.js"></script>
+
+    <script src="/javascripts/controller/angular-controller.js"></script>
+    <script src="/javascripts/service/angular-services.js"></script>
+
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet"
+          href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic"/>
+</head>
+
+<body data-spy="scroll" data-target="#navbar-scroll" style="color: #B9611F" ng-app="helpDeskApp">
+
+<div id="home" class="container-fluid">
+    <div class="fullscreen landing parallax" style="background-image:url('images/backgd.jpg');" data-img-width="2300"
+         data-img-height="1500" data-diff="100">
+        <div style="height: 750px; " class="row">
+            <div class="overlay">
+                <div id="intro">
+                    <div class="container">
+                        <div class="row">
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row" ng-controller="userController">
+
+                        <div class="col-md-7">
+                            <!-- /.main title -->
+                            <h1 class="wow fadeInLeft">
+                                Mobiquity-Pune Help Desk
+                            </h1>
+
+                            <!-- /.header paragraph -->
+                            <div class="landing-text wow fadeInLeft">
+                                <p>Customer service is tough in any industry.<br> However, companies and organizations
+                                    that produce incredible service to every customer have a clear competitive
+                                    advantage.<br> To
+                                    remind you of the amazing opportunities that powerful customer service holds, here
+                                    is a
+                                    compilation of insightful words of wisdom from the best in the business. !</p>
+                            </div>
+
+                            <!-- /.header button -->
+                            <div class="head-btn wow fadeInLeft">
+                                <a href="javascript:toggle('div#login','div#registration');"
+                                   class="btn-primary">Login</a>
+                                <a href="javascript:toggle('div#registration','div#login')"
+                                   class="btn-default">Register</a>
+                            </div>
+                        </div>
+                        <div class="col-md-5" >
+                            <div id="registration" class="form-group hide-tab">
+                                <div class="col-sm-offset-3 col-sm-7">
+                                    <label for="firstname">First name</label>
+                                    <input type="text" ng-model="userEntry.firstname" class="form-control input-sm" name="firstname" id="firstname"
+                                           placeholder="First Name" required>
+                                </div>
+                                <div class="col-sm-offset-3 col-sm-7">
+                                    <label for="lastname">Last name</label>
+                                    <input type="text" ng-model="userEntry.lastname" class="form-control input-sm" name="lastname" id="lastname"
+                                           placeholder="Last Name" required>
+                                </div>
+                                <div class="col-sm-offset-3 col-sm-7">
+                                    <label for="email">Email ID</label>
+                                    <input type="text" ng-model="userEntry.email" class="form-control input-sm" name="email" id="email"
+                                           placeholder="Email ID" required>
+                                </div>
+                                <div class="col-sm-offset-3 col-sm-7">
+                                    <label for="mobile">Mobile Number</label>
+                                    <input type="text" ng-model="userEntry.mobile" class="form-control input-sm" name="mobile" id="mobile"
+                                           placeholder="Mobile Number" required>
+                                </div>
+                                <div class="col-sm-offset-3 col-sm-7">
+                                    <label for="userName">User Name</label>
+                                    <input type="text" ng-model="userEntry.username" class="form-control input-sm" name="username" id="username"
+                                           placeholder="User Name" required>
+                                </div>
+                                <div class="col-sm-offset-3 col-sm-7">
+                                    <label for="password">Password</label>
+                                    <input type="password" ng-model="userEntry.password" class="form-control input-sm" name="password" id="password"
+                                           placeholder="Password" required>
+                                </div>
+                                <div class="col-sm-offset-3 col-sm-7">
+                                    <div class="col-sm-offset-3 col-sm-7">
+                                        <input type="submit" ng-click="register(userEntry);" class="btn-default" value="Register"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="login" class="form-group hide-tab">
+                                <div class="col-sm-offset-3 col-sm-7">
+                                    <label for="userName">User Name</label>
+                                    <input type="text" class="form-control input-sm" ng-model="loginEntry.username" name="username" id="username"
+                                           placeholder="User Name" required>
+                                </div>
+                                <div class="col-sm-offset-3 col-sm-7">
+                                    <label for="password">Password</label>
+                                    <input type="password" ng-model="loginEntry.password" class="form-control input-sm" name="password"
+                                           id="password"
+                                           placeholder="Password" required>
+                                </div>
+
+                                <div class="col-sm-offset-3 col-sm-7">
+                                    <div class="col-sm-offset-3 col-sm-7">
+                                        <input type="hidden" name="grant_type" ng-model="loginEntry.grant_type" ng-value="password"/>
+                                        <input type="submit" ng-click="login(loginEntry);" class="btn-default" value="Login"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer id="footer">
+    <div class="container">
+        <div class="col-sm-4 col-sm-offset-4">
+            <!-- /.social links -->
+            <div class="social text-center">
+                <ul>
+                    <li><a class="wow fadeInUp" href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                    <li><a class="wow fadeInUp" href="https://www.facebook.com/" data-wow-delay="0.2s"><i
+                                    class="fa fa-facebook"></i></a></li>
+                    <li><a class="wow fadeInUp" href="https://plus.google.com/" data-wow-delay="0.4s"><i
+                                    class="fa fa-google-plus"></i></a></li>
+                    <li><a class="wow fadeInUp" href="https://instagram.com/" data-wow-delay="0.6s"><i
+                                    class="fa fa-instagram"></i></a></li>
+                </ul>
+            </div>
+            <div class="text-center wow fadeInUp" style="font-size: 14px;">Copyright <a
+                        href="http://www.mobiquityinc.com">Mobiquity Softtech Pvt Ltd.</a></div>
+            <a href="#" class="scrollToTop"><i class="pe-7s-up-arrow pe-va"></i></a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

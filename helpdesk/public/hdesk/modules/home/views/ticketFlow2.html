@@ -1,0 +1,30 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <i class="fa fa-clock-o fa-fw"></i> Responsive Timeline
+    </div>
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+        <ul class="timeline">
+            <!-- ng-style="resData.status.statusId == status.statusId ? {color:'#FF6200'} :{}"-->
+            <!--ng-style="point.type=='assign'?  {color:'#FF6200'}:{}"-->
+            <li ng-repeat="point in resData.flows" ng-class="getClass(point.type)">
+                <div class="timeline-badge"><i class="fa fa-check"></i>
+                </div>
+                <div class="timeline-panel">
+                    <span ng-if="point.type=='assign'">
+                    <div class="timeline-body" ng-repeat="log in point.data">
+                        <p>Ticket assigned to {{log.assignedTo.firstname}} {{log.assignedTo.lastname}}, by {{log.assignedBy.firstname}}</p>
+                    </div>
+                        </span>
+                    <span ng-if="point.type=='status'">
+                    <div class="timeline-body" ng-repeat="log in point.data" style="margin-bottom: 2%">
+                        <p>Status changed to <b style="color:green">{{log.status.name}}</b>, by {{log.changedBy.firstname}} {{log.changedBy.lastname}}</p>
+
+                    </div>
+                        </span>
+                </div>
+            </li>
+  </ul>
+    </div>
+    <!-- /.panel-body -->
+</div>

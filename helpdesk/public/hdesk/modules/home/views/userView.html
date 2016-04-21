@@ -1,0 +1,43 @@
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="page-header">View User</h3>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Details
+                </div>
+                <div class="panel-body">
+                    <div id="msgBody">
+
+                    </div>
+                    <dl class="dl-horizontal">
+                        <dt>Name:</dt>
+                        <dd>{{resData.firstname}} {{resData.lastname}}</dd>
+                        <dt>Email:</dt>
+                        <dd>{{resData.email}}</dd>
+                        <dt>Mobile:</dt>
+                        <dd>{{resData.mobile}}</dd>
+                        <dt>About user:</dt>
+                        <dd>Vice president of Software Development department</dd>
+                        <dt>Support type:</dt>
+                        <dd>{{resData.supportType.name}}</dd>
+                        <dt>Roles:</dt>
+                        <dd> <span ng-repeat="role in resData.roles"> {{role.name}},</span> </dd>
+                        <dt>Status:</dt>
+                        <dd>Active</dd>
+                    </dl>
+                    <a href="#/userEdit/{{resData._id}}">Edit</a>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+    </div>
+    <!-- /.row -->
+</div>
